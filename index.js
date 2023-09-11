@@ -49,11 +49,6 @@ const topMoviesList = [
     },
 ];
 
-
-//create a write stream (in append mode)
-//a 'log.txt' file is created in root directory
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'});
-
 app.get('/', (req, res) => {
     res.send('Welcome to my app!');
 });
@@ -66,7 +61,7 @@ app.get("/movies", (req, res) => {
 app.use(express.static('public'));
 
 //setup the logger
-app.use(morgan('combined', {stream: accessLogStream}));
+app.use(morgan('combined'));
 
 //error-handling
 app.use((err, req, res, next) => {
