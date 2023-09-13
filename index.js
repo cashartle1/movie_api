@@ -12,41 +12,169 @@ app.use(bodyParser.json());
 //Users
 let users = [
     {
-        title: "movie 2",
-        director: "director 2",
+        id: 1, 
+        name: "Kim",
+        favoriteMovies: ["The Princess Bride"]
     },
     {
-        title: "movie 3",
-        director: "director 3",
+        id: 2, 
+        name: "joe", 
+        favoriteMovies: []
     },
+]
+
+//Movies List
+const movies = [
     {
-        title: "movie 4",
-        director: "director 4",
-    },
+        "Title": "The Princess Bride",
+        "Description": "While home sick in bed, a young boy's grandfather reads him the story of a farm-boy-turned-pirate who encoutners numerous obstacles, enemies, and allies in his quest to reunite with his true love.",
+        "Genre": {
+            "Name":"Adventure",
+            "Description": "Adventure film is similar to an Action film except that it is typically set in an exotic, far way, or unfamiliar locale. Like the the Action film genre, this is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include fighting, physical feats, rescues, and frantic chases. Action films tend to feature a mostly resourceful hero struggling against incredible odds, which include life-threating situations, a dangerous villian, or a pursuit which usually concludes in victory for the hero.",
+        },
+        "Director": {
+            "Name": "Rob Reiner",
+            "Description": "Rob Reiner was born in New York City in 1947 to actor-comedian-writer-producer Carl Reiner and singer Estelle Reiner. His inspiration to become a director  came from his mother, along with his father as his role model. When Rob graduated high school, his parents advised him to participate in Summer Theatre. Reiner got a job as an apprentice in the Bucks County Playhouse in Pennsylvania. He went on to UCLA Film School to further his education. Reiner felt he still wasn't successful even having a recurring role on one of the biggest shows in the country, All in the Family. He began his directing career with the Oscar-nominated films This Is Spinal Tap, Stand By Me, and The Princess Bride. He also has gone on to direct and produce several other successful box-office movies, become a political activist, and made cameo appearances on television. ",
+            "Birth": 1947.0,
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
     {
-        title: "movie 5",
-        director: "director 5",
-    },
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
     {
-        title: "movie 6",
-        director: "director 6",
-    },
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
     {
-        title: "movie 7",
-        director: "director 7",
-    },
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
     {
-        title: "movie 8",
-        director: "director 8",
-    },
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
     {
-        title: "movie 9",
-        director: "director 9",
-    },
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
     {
-        title: "movie 10",
-        director: "director 10",
-    },
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
+    {
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
+    {
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
+    {
+        "Title": "",
+        "Description": "",
+        "Genre": {
+            "Name":"",
+            "Description": "",
+        },
+        "Director": {
+            "Name": "",
+            "Description": "",
+            "Birth": "",
+        } ,
+        "ImageURL":"",
+        "Featured":false
+    }, 
 ];
 
 app.get('/', (req, res) => {
