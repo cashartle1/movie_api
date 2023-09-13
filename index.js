@@ -1,16 +1,16 @@
 const express = require('express'),
     morgan = require('morgan'),
     fs = require('fs'),
-    path = require('path');
-
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    uuid = require('uuid');
+    
 const app = express();
 
-//Top Movies List
-const topMoviesList = [
-    {
-        title: "movie 1",
-        director: "director 1",
-    }, 
+app.use(bodyParser.json());
+
+//Users
+let users = [
     {
         title: "movie 2",
         director: "director 2",
