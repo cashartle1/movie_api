@@ -15,7 +15,13 @@ const Users = Models.User;
 const Genres = Models.Genre;
 const Directors = Models.Directors
 
+//connect to database
+mongoose.connect('mongodb://127.0.0.1:27017/myFLixDB', { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+});
 
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.send('Welcome to my app!');
