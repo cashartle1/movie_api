@@ -95,23 +95,29 @@
                 </tr>
 
                 <tr>
-                    <td>Add a new user</td>
+                    <td>Add a new user/username</td>
                     <td>/users</td>
                     <td>POST</td>
                     <td>A JSON object holding user data, structured as below: 
                         <br><code>
                             {
-                                "name": "Mary",
-                                "favoriteMovies": [],
+                                "Username": "Mary",
+                                "Password": "cowMoo2",
+                                "Email": "marypopps@example.com",
+                                "Birthday" : "2000-02-05",
+                                "favoriteMovies": []
                             }
                         </code>
                     </td>
                     <td>A JSON Object holding newly added user data with an assigned ID:
                         <br><code>
                             {
-                                "name": "Mary", 
-                                "favoriteMovies": [],
-                                "id": "#####"
+                                "Username": "Mary",
+                                "Password": "cowMoo2",
+                                "Email": "marypopps@example.com",
+                                "Birthday": "2000-02-05T00:00:00.000Z",
+                                "FavoriteMovies": [],
+                                "_id": "6515fc28494861e76a966509"
                             }
                         </code>
                     </td>
@@ -119,13 +125,16 @@
 
                 <tr>
                     <td>Update existing user's id(username)</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>PUT</td>
                     <td>A JSON object holding user data. Example:
                         <br><code>
                             {
-                                "name": "Kim Updated Name",
-                                "favoriteMovies": []
+                                "Username": "example1",
+                                "Password": "password",
+                                "Email": "carley@example.com",
+                                "Birthday": "1985-02-19",
+                                "FavoriteMovies": []
                             }
                         </code>
                     </td>
@@ -133,9 +142,12 @@
                         A JSON object holding user's updated data with ID. Example:
                         <br><code>
                             {
-                                "id": 1,
-                                "name": "Kim Updated Name",
-                                "favoriteMovies": []
+                                "_id": 1,
+                                "Username": "example1",
+                                "Password": "password",
+                                "Email": "carley@example.com",
+                                "Birthday": "1985-02-19T00:00:00.000Z",
+                                "FavoriteMovies": []
                             }
                         </code>
                     </td>
@@ -143,7 +155,7 @@
 
                 <tr>
                     <td>Add new movie to the user's favorite movies list</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>POST</td>
                     <td>none</td>
                     <td>A text message indication that specified movie title was successfully added to the user's favorite movie list.</td>
@@ -151,15 +163,29 @@
 
                 <tr>
                     <td>Remove a movie from the user's favorite movies list</td>
-                    <td>/user/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>DELETE</td>
-                    <td>none</td>
-                    <td>A text message indication that specified movie title was successfully removed from the user's favorite movie list.</td>
+                    <td>in the browser's URL, in place of /:MovieID, use the movie's unique ObjectID </td>
+                    <td>A JSON object of all user's information and updated FavoriteMovies list without the movie that was successfully removed from the list.
+                    Example:
+                        <br><code>
+                            {
+                                "_id": "650b0a58711d2a6225312bc6",
+                                "Username": "annnnnas123",
+                                "Password": "test1",
+                                "Email": "anna2@example.com",
+                                "Birthday": "1999-03-03T00:00:00.000Z",
+                                "FavoriteMovies": [
+                                    "6509fff79f56bb606a13b530"
+                                ]
+                            }
+                        </code>
+                    </td>
                 </tr>
 
                 <tr>
                     <td>Delete a user registration</td>
-                    <td>/user/:id</td>
+                    <td>/user/:Username</td>
                     <td>DELETE</td>
                     <td>None</td>
                     <td>A text message indication that specified user was successfully removed.</td>
