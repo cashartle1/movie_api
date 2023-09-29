@@ -23,12 +23,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/myFLixDB', {
 
 app.use(bodyParser.json());
 
+//Default text response when at /
 app.get('/', (req, res) => {
-    res.send('Welcome to my app!');
+    res.send('Welcome to MyFlix!');
 });
-// app.get('/', (req, res) => {
-//     res.send('Welcome to my app!');
-// });
 
 // CREATE - new users
 app.post('/users', (req, res) => {
