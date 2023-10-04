@@ -21,6 +21,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/myFLixDB', {
 });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//Authentication & Login Endpoint
+//Login HTML Authentication
+let auth = require('./auth')(app);
+//JWT Authentication
+const passport = require('passport');
+require('./passport');
 
 //Default text response when at /
 app.get('/', (req, res) => {
