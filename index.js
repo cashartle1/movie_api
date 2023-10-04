@@ -12,8 +12,7 @@ const app = express();
 
 const Movies = Models.Movie;
 const Users = Models.User;
-const Genres = Models.Genre;
-const Directors = Models.Directors
+
 
 //connect to database
 mongoose.connect('mongodb://127.0.0.1:27017/myFLixDB', { 
@@ -34,7 +33,7 @@ app.post('/users', async (req, res) => {
     await Users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
-                return res.status(400).send(req.body.Userna, e + 'already exists');
+                return res.status(400).send(req.body.Username + 'already exists');
             } else {
                 Users
                     .create({
