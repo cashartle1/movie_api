@@ -24,10 +24,10 @@ const Users = Models.User;
 // });
 
 //connect to online database
-mongoose.connect(process.env.CONNECTION_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
+mongoose.connect( process.env.CONNECTION_URI, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+});
 
 
 app.use(bodyParser.json());
@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 });
 
 // CREATE - new users
-app.post('/users', async (req, res) => {
+app.post('/users', 
     //Validation Logic
     [
         check('Username', 'Username is required').isLength({ min: 5 }),
@@ -106,7 +106,7 @@ app.post('/users', async (req, res) => {
                 res.status(500).send('Error: ' + error);
             });
     }
-});
+);
 
 // UPDATE - user's info by username
 /* Expected JSON in this format
