@@ -44,7 +44,7 @@ let allowedOrigins = [
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {  //if a specfific origin isn't found on the list of allow origins
+        if (allowedOrigins.indexOf(origin) === -1) {
             let mesage = "The CORS policy for this application doesn't allow access from origin " + origin;
             return callback(new Error(message), false);
         }
@@ -59,7 +59,6 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
 
-//Default text response when at /
 app.get('/', (req, res) => {
     res.send('Welcome to MyFlix!');
 });
@@ -73,7 +72,6 @@ app.post('/users',
         check('Password', 'Password is require').not().isEmpty(),
         check('Email', 'Email does not appear to be valid').isEmail()
     ], async (req, res) => {
-        //check the validation object for errors
         let errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -127,10 +125,9 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
         check('Password', 'Password is require').not().isEmpty(),
         check('Email', 'Email does not appear to be valid').isEmail()
     ], async (req, res) => {
-        //condition to check added here
         if (req.user.Username !== req.params.Username) {
             return res.status(400).send('Permission denied');
-        } //condition ends
+        }
 
         let hashedPassword = Users.hashPassword(req.body.Password);
 
@@ -143,7 +140,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
                 Birthday: req.body.Birthday
             }
         },
-            { new: true }) //return updated document 
+            { new: true }) 
             .then((updatedUser) => {
                 res.json(updatedUser);
             })
@@ -159,7 +156,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
     await Users.findOneAndUpdate({ Username: req.params.Username }, {
         $push: { FavoriteMovies: req.params.MovieID }
     },
-        { new: true }) //return updated document
+        { new: true }) 
         .then((updatedUser) => {
             res.json(updatedUser);
         })
@@ -174,7 +171,7 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
     await Users.findOneAndUpdate({ Username: req.params.Username }, {
         $pull: { FavoriteMovies: req.params.MovieID }
     },
-        { new: true }) //return updated document
+        { new: true }) 
         .then((updatedUser) => {
             if (!updatedUser) {
                 res.status(400).send(req.params.Username + ' was not found');
