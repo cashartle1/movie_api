@@ -19,7 +19,7 @@ To build a REST API and server-side component of a "movies" web front-end applic
 * Mongoose
 * passport
 * Postman 
-* see packages.json for full list of project dependencies
+* see package.json for full list of project dependencies
 
 ### Links: 
 * GitHub Repository: https://github.com/cashartle1/movie_api
