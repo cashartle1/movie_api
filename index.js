@@ -24,9 +24,9 @@ const Users = Models.User;
 // });
 
 //connect to online database
-mongoose.connect( process.env.CONNECTION_URI, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
+mongoose.connect(process.env.CONNECTION_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 
@@ -64,7 +64,7 @@ app.get('/', (req, res) => {
 });
 
 // CREATE - new users
-app.post('/users', 
+app.post('/users',
     //Validation Logic
     [
         check('Username', 'Username is required').isLength({ min: 5 }),
@@ -140,7 +140,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
                 Birthday: req.body.Birthday
             }
         },
-            { new: true }) 
+            { new: true })
             .then((updatedUser) => {
                 res.json(updatedUser);
             })
@@ -156,7 +156,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
     await Users.findOneAndUpdate({ Username: req.params.Username }, {
         $push: { FavoriteMovies: req.params.MovieID }
     },
-        { new: true }) 
+        { new: true })
         .then((updatedUser) => {
             res.json(updatedUser);
         })
@@ -171,7 +171,7 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
     await Users.findOneAndUpdate({ Username: req.params.Username }, {
         $pull: { FavoriteMovies: req.params.MovieID }
     },
-        { new: true }) 
+        { new: true })
         .then((updatedUser) => {
             if (!updatedUser) {
                 res.status(400).send(req.params.Username + ' was not found');
@@ -202,7 +202,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 })
 
 // READ  - returns list of all Movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get('/movies', async (req, res) => {
     await Movies.find()
         .then((movies) => {
             res.status(201).json(movies);
