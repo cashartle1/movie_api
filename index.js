@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 });
 
 // CREATE - new users
-app.post('/users',
+app.post('/users', passport.authenticate('jwt', { session: false }),
     //Validation Logic
     [
         check('Username', 'Username is required').isLength({ min: 5 }),
