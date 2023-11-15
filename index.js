@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 });
 
 // CREATE - new users
-app.post('/users', passport.authenticate('jwt', { session: false }),
+app.post('/users',
     //Validation Logic
     [
         check('Username', 'Username is required').isLength({ min: 5 }),
@@ -252,7 +252,7 @@ app.get('/movies/directors/:directorName', passport.authenticate('jwt', { sessio
 
 
 //GET all users
-app.get('/users', async (req, res) => {
+app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
     await Users.find()
         .then((users) => {
             res.status(201).json(users);
